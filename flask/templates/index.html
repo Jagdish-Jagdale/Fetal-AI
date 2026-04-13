@@ -3,12 +3,9 @@
 {% block content %}
   <!-- Hero Section -->
   <section class="hero-section">
-    <!-- Background Decoration -->
     <div class="hero-bg-wave">
       <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" style="overflow: visible;">
-        <!-- Deep organic blue shape -->
         <path class="hero-path-1" d="M1000,-100 L400,-100 C0,200 0,800 400,1100 L1000,1100 Z" fill="url(#hero-grad-1)"></path>
-        <!-- Secondary accent shape -->
         <path class="hero-path-2" d="M1000,-100 L600,-100 C300,300 300,700 600,1100 L1000,1100 Z" fill="url(#hero-grad-2)"></path>
         <defs>
           <linearGradient id="hero-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -64,70 +61,5 @@
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section id="features" class="features-section">
-    <div class="section-header">
-      <span class="eyebrow">Capabilities</span>
-      <h2 class="section-title">Intelligent Monitoring Solutions</h2>
-      <p class="section-desc">Our platform integrates cutting-edge health informatics to deliver actionable insights during critical monitoring phases.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="icon-box">📊</div>
-        <h3>Real-time Classification</h3>
-        <p>Instantaneous processing of fetal heart rate monitoring data into Normal, Suspect, or Pathological categories.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box">🧠</div>
-        <h3>Multi-Model Ensemble</h3>
-        <p>Combining Random Forest, Decision Trees, and KNN for highly robust and verified predictions.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon-box">🏥</div>
-        <h3>Clinical Integration</h3>
-        <p>Designed to complement existing obstetric workflows with data-driven decision support systems.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Science/About Section -->
-  <section id="about" class="science-section">
-    <div class="science-container">
-      <div class="science-visual">
-        <div class="data-pulse"></div>
-        <div class="science-card">
-          <div class="card-head">Prediction Logic</div>
-          <div class="card-body">
-            <div class="logic-row"><span>FHR Baseline</span> <div class="logic-bar" style="width: 80%"></div></div>
-            <div class="logic-row"><span>Accelerations</span> <div class="logic-bar" style="width: 60%"></div></div>
-            <div class="logic-row"><span>Variability</span> <div class="logic-bar" style="width: 90%"></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="science-content">
-        <span class="eyebrow">The Science</span>
-        <h2 class="section-title">How FetalAI Works</h2>
-        <p>FetalAI leverages specialized algorithms trained on thousands of cardiotocography (CTG) samples. By analyzing 21 distinct features, the model identifies subtle patterns indicates of fetal wellbeing or distress that might be missed in traditional review.</p>
-        <ul class="science-list">
-          <li>Automated signal processing</li>
-          <li>Feature extraction from heart rate patterns</li>
-          <li>Probabilistic risk score generation</li>
-        </ul>
-        <a href="{{ url_for('inspect') }}" class="btn-primary">Test the Model</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact/CTA Section -->
-  <section id="contact" class="cta-section">
-    <div class="cta-card">
-      <h2>Ready to modernize monitoring?</h2>
-      <p>Join clinical researchers and medical professionals using AI to drive obstetric excellence.</p>
-      <div class="cta-btns">
-        <a href="{{ url_for('inspect') }}" class="btn-white">Apply Analytics Now</a>
-        <a href="#" class="btn-outline-white">Read Documentation</a>
-      </div>
-    </div>
-  </section>
+  <!-- CTA Section -->
 {% endblock %}
-

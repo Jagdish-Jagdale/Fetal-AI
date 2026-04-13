@@ -27,9 +27,9 @@
 
       <div class="nav-links">
         <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('index') }}#features">Features</a>
-        <a href="{{ url_for('index') }}#about">Science</a>
-        <a href="{{ url_for('index') }}#contact">Support</a>
+        <a href="{{ url_for('features') }}">Features</a>
+        <a href="{{ url_for('science') }}">Science</a>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
       </div>
       <div class="nav-cta">
         <a href="{{ url_for('inspect') }}" class="btn-primary-sm">Start Prediction</a>
@@ -56,10 +56,10 @@
     <div class="footer-container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="{{ url_for('static', filename='images/fetalblue.png') }}" alt="FetalAI" class="logo-img-small">
-          <span>FetalAI</span>
-
-
+          <a href="{{ url_for('index') }}" class="footer-logo">
+            <img src="{{ url_for('static', filename='images/fetalblue.png') }}" alt="FetalAI" class="logo-img-footer">
+            <span class="footer-title">FetalAI</span>
+          </a>
           <p>Advancing maternal and fetal health through precision machine learning and real-time clinical data
             analysis.</p>
         </div>

@@ -7,7 +7,7 @@ from typing import Any
 import joblib
 import numpy as np
 import pandas as pd
-from flask import Flask, flash, render_template, request
+from flask import Flask, flash, render_template, request, redirect, url_for
 
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "model.pkl"
@@ -20,14 +20,14 @@ FIELD_GROUPS = [
     {
         "title": "Fetal Health Inputs",
         "fields": [
-            {"name": "prolongued_decelerations", "label": "Prolongued Decelerations", "default": 0.0, "step": "any"},
-            {"name": "abnormal_short_term_variability", "label": "Abnormal Short Term Variability", "default": 47, "step": "any"},
-            {"name": "percentage_of_time_with_abnormal_long_term_variability", "label": "Percentage of Time With Abnormal Long Term Variability", "default": 9, "step": "any"},
-            {"name": "histogram_variance", "label": "Histogram Variance", "default": 17, "step": "any"},
-            {"name": "histogram_median", "label": "Histogram Median", "default": 137, "step": "any"},
-            {"name": "mean_value_of_long_term_variability", "label": "Mean Value of Long Term Variability", "default": 8, "step": "any"},
-            {"name": "histogram_mode", "label": "Histogram Mode", "default": 141, "step": "any"},
-            {"name": "accelerations", "label": "Accelerations", "default": 0.003, "step": "any"},
+            {"name": "prolongued_decelerations", "label": "Prolongued Decelerations", "default": 0, "step": "any"},
+            {"name": "abnormal_short_term_variability", "label": "Abnormal Short Term Variability", "default": 0, "step": "any"},
+            {"name": "percentage_of_time_with_abnormal_long_term_variability", "label": "Percentage of Time With Abnormal Long Term Variability", "default": 0, "step": "any"},
+            {"name": "histogram_variance", "label": "Histogram Variance", "default": 0, "step": "any"},
+            {"name": "histogram_median", "label": "Histogram Median", "default": 0, "step": "any"},
+            {"name": "mean_value_of_long_term_variability", "label": "Mean Value of Long Term Variability", "default": 0, "step": "any"},
+            {"name": "histogram_mode", "label": "Histogram Mode", "default": 0, "step": "any"},
+            {"name": "accelerations", "label": "Accelerations", "default": 0, "step": "any"},
         ],
     },
 ]
@@ -89,6 +89,16 @@ def index() -> str:
     )
 
 
+@app.route("/features")
+def features() -> str:
+    return render_template("features.html")
+
+
+@app.route("/science")
+def science() -> str:
+    return render_template("science.html")
+
+
 @app.route("/inspect")
 def inspect() -> str:
     metadata = load_metadata()
@@ -99,6 +109,13 @@ def inspect() -> str:
         metadata=metadata,
         model_ready=model_ready,
     )
+
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact() -> str:
+    if request.method == "POST":
+        flash("Thank you for your message! We will get back to you soon.", "success")
+    return render_template("contact.html")
 
 
 @app.route("/predict", methods=["POST"])

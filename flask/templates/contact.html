@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!-- Contact Form Section -->
+  <section class="panel form-panel contact-panel" style="margin-top: 40px;">
+    <div class="group-head">
+      <p class="eyebrow">Contact</p>
+      <h2>CONTACT US</h2>
+    </div>
+
+    <div class="contact-layout">
+      <div class="contact-info">
+        <div class="info-item">
+          <div class="icon-box-small">&#128205;</div> 
+          <div class="info-text">
+            <h4>Location:</h4>
+            <p>FetalAI Medical Center, Biotech Park, 3rd Floor, Innovation Drive, Metro City, 90210</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="icon-box-small">&#9993;</div>
+          <div class="info-text">
+            <h4>Email:</h4>
+            <p>support@fetalai.com</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="icon-box-small">&#128241;</div>
+          <div class="info-text">
+            <h4>Call:</h4>
+            <p>+1 800-123-4567</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-container">
+        <form method="post" action="{{ url_for('contact') }}" class="contact-form">
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+          </div>
+          <input type="text" name="subject" placeholder="Subject" required>
+          <textarea name="message" rows="6" placeholder="Message" required></textarea>
+          
+          <div class="contact-action">
+            <button type="submit" class="primary-button contact-btn">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ready to Modernize Section -->
+  <section class="cta-section" style="margin-bottom: 80px;">
+    <div class="cta-card">
+      <h2>Ready to modernize monitoring?</h2>
+      <p>Join clinical researchers and medical professionals using AI to drive obstetric excellence.</p>
+      <div class="cta-btns">
+        <a href="{{ url_for('inspect') }}" class="btn-white">Apply Analytics Now</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}
