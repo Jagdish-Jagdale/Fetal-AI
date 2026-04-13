@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="panel form-panel">
+  <div class="group-head">
+    <p class="eyebrow">Inspect</p>
+    <h3>Enter feature values for prediction</h3>
+  </div>
+
+  <form method="post" action="{{ url_for('predict') }}" class="prediction-form">
+    {% for group in field_groups %}
+    <section class="input-group">
+      <div class="field-grid">
+        {% for field in group.fields %}
+        <label class="field-card" for="{{ field.name }}">
+          <span>{{ field.label }}</span>
+          <input id="{{ field.name }}" name="{{ field.name }}" type="number" value="{{ field.default }}"
+            step="{{ field.step }}" required />
+        </label>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+    <hr class="action-divider">
+
+    <div class="form-actions">
+      <button type="submit" class="primary-button" {% if not model_ready %}disabled{% endif %}>
+        Predict
+      </button>
+    </div>
+
+
+
+  </form>
+</section>
+{% endblock %}

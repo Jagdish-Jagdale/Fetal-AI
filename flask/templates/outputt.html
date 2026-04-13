@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <section class="panel result-panel panel-flush">
+    <div class="result-content-wrapper">
+      <div class="result-hero">
+        <div>
+          <p class="eyebrow">Prediction output</p>
+          <h2>fetal_health: {{ prediction_text }}</h2>
+          <p class="hero-copy">
+            Predicted class code: {{ prediction_code }}.
+            {% if confidence is not none %}
+              Confidence: {{ (confidence * 100) | round(2) }}%.
+            {% endif %}
+          </p>
+        </div>
+        <div class="result-badge state-{{ prediction_text | lower }}">{{ prediction_text }}</div>
+      </div>
+    </div>
+    <div class="result-actions-inline">
+      <a href="{{ url_for('inspect') }}" class="primary-button">
+        <svg class="icon-retry" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M23 4v6h-6"></path>
+          <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+        </svg>
+        Predict Again
+      </a>
+    </div>
+  </section>
+
+  <section class="panel summary-panel">
+    <div class="group-head">
+      <p class="eyebrow">Input summary</p>
+      <h3>Submitted values</h3>
+    </div>
+    <div class="summary-grid">
+      {% for group in field_groups %}
+        {% for field in group.fields %}
+          <div class="summary-item">
+            <span>{{ field.label }}</span>
+            <strong>{{ input_values[field.name] }}</strong>
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
+
