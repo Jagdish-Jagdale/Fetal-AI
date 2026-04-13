@@ -1,89 +1,96 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ page_title or 'FetalAI | Advanced Health Analytics' }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/titlelogo.png') }}">
-  </head>
 
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="{{ url_for('index') }}" class="nav-logo">
-          <img src="{{ url_for('static', filename='images/titlelogo.png') }}" alt="FetalAI" class="logo-img">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ page_title or 'FetalAI | Advanced Health Analytics' }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/Fetalyellow.png') }}">
+</head>
+
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="{{ url_for('index') }}" class="nav-logo">
+        <img src="{{ url_for('static', filename='images/titlelogo.png') }}" alt="FetalAI" class="logo-img">
+        <span>FetalAI</span>
+      </a>
+
+
+      <div class="nav-links">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('index') }}#features">Features</a>
+        <a href="{{ url_for('index') }}#about">Science</a>
+        <a href="{{ url_for('index') }}#contact">Support</a>
+      </div>
+      <div class="nav-cta">
+        <a href="{{ url_for('inspect') }}" class="btn-primary-sm">Start Prediction</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-container">
+      {% for category, message in messages %}
+      <div class="flash-message flash-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="{{ url_for('static', filename='images/fetalblue.png') }}" alt="FetalAI" class="logo-img-small">
           <span>FetalAI</span>
-        </a>
 
-        <div class="nav-links">
-          <a href="{{ url_for('index') }}">Home</a>
-          <a href="{{ url_for('index') }}#features">Features</a>
-          <a href="{{ url_for('index') }}#about">Science</a>
-          <a href="{{ url_for('index') }}#contact">Support</a>
+
+          <p>Advancing maternal and fetal health through precision machine learning and real-time clinical data
+            analysis.</p>
         </div>
-        <div class="nav-cta">
-          <a href="{{ url_for('inspect') }}" class="btn-primary-sm">Start Prediction</a>
+        <div class="footer-links">
+          <h4>Solutions</h4>
+          <a href="#">Health Monitoring</a>
+          <a href="#">Risk Assessment</a>
+          <a href="#">Clinical Insights</a>
         </div>
-      </div>
-    </nav>
-
-    <main>
-      {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-          <div class="flash-container">
-            {% for category, message in messages %}
-              <div class="flash-message flash-{{ category }}">{{ message }}</div>
-            {% endfor %}
-          </div>
-        {% endif %}
-      {% endwith %}
-
-      {% block content %}{% endblock %}
-    </main>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-      <div class="footer-container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <img src="{{ url_for('static', filename='images/titlelogo.png') }}" alt="FetalAI" class="logo-img-small">
-            <span>FetalAI</span>
-
-            <p>Advancing maternal and fetal health through precision machine learning and real-time clinical data analysis.</p>
-          </div>
-          <div class="footer-links">
-            <h4>Solutions</h4>
-            <a href="#">Health Monitoring</a>
-            <a href="#">Risk Assessment</a>
-            <a href="#">Clinical Insights</a>
-          </div>
-          <div class="footer-links">
-            <h4>Company</h4>
-            <a href="#">About Us</a>
-            <a href="#">Research</a>
-            <a href="#">Privacy Policy</a>
-          </div>
-          <div class="footer-links">
-            <h4>Connect</h4>
-            <a href="#">Documentation</a>
-            <a href="#">API Reference</a>
-            <a href="#">Support</a>
-          </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Research</a>
+          <a href="#">Privacy Policy</a>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 FetalAI Global Science Center. All rights reserved.</p>
-          <div class="footer-legal">
-            <a href="#">Terms of Service</a>
-            <a href="#">Security</a>
-          </div>
+        <div class="footer-links">
+          <h4>Connect</h4>
+          <a href="#">Documentation</a>
+          <a href="#">API Reference</a>
+          <a href="#">Support</a>
         </div>
       </div>
-    </footer>
-  </body>
+      <div class="footer-bottom">
+        <p>&copy; 2026 FetalAI Global Science Center. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Terms of Service</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>
-
