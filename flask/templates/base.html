@@ -16,7 +16,7 @@
 
 
 <body>
-  <!-- Navigation -->
+  <!-- Navigations -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="{{ url_for('index') }}" class="nav-logo">
@@ -28,9 +28,11 @@
       <div class="nav-right-group">
         <div class="nav-links">
           <a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' else '' }}">Home</a>
-          <a href="{{ url_for('features') }}" class="{{ 'active' if request.endpoint == 'features' else '' }}">Features</a>
+          <a href="{{ url_for('features') }}"
+            class="{{ 'active' if request.endpoint == 'features' else '' }}">Features</a>
           <a href="{{ url_for('science') }}" class="{{ 'active' if request.endpoint == 'science' else '' }}">Science</a>
-          <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact Us</a>
+          <a href="{{ url_for('contact') }}" class="{{ 'active' if request.endpoint == 'contact' else '' }}">Contact
+            Us</a>
         </div>
         <div class="nav-cta">
           <a href="{{ url_for('inspect') }}" class="btn-primary-sm">Start Prediction</a>
